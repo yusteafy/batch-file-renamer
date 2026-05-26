@@ -60,7 +60,7 @@ A batch file renaming tool with a flexible rule system, preview, and multi-step 
 - Remove Unicode noise
 - Fix extra spacing
 
-## Advanced Features
+## Features
 
 ### Preview System
 - Shows old name → new name

@@ -1,0 +1,10 @@
+[project]
+name = "file-renamer"
+version = "1.0.0"
+description = "A powerful GUI file renamer built with PyQt6. Supports batch renaming with find & replace, case conversion, numbering, prefix/suffix, and more."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pyinstaller>=6.20.0",
+    "pyqt6>=6.11.0",
+]

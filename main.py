@@ -6,7 +6,7 @@ import random
 import json
 from typing import List, Tuple
 from datetime import datetime
-from PyQt6.QtCore import Qt, QThread, pyqtSignal
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QSettings
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QTableWidget, QTableWidgetItem, QPushButton, QFileDialog, QLineEdit, QLabel, QSpinBox, QCheckBox, QMessageBox, QGroupBox, QDialog, QListWidget, QRadioButton, QSplitter, QToolButton, QStackedWidget, QComboBox
 
@@ -1345,6 +1345,8 @@ class FileRenamerApp(QMainWindow):
         self.serialize_counter = {}
         self.randomize_used_values = {}
         self.init_ui()
+        self.settings = QSettings("setting.ini", QSettings.Format.IniFormat)
+        self.load_settings()
 
     def init_ui(self):
         central_widget = QWidget()
@@ -1527,6 +1529,31 @@ class FileRenamerApp(QMainWindow):
         central_widget.setLayout(main_layout)
 
         self.override_table_key_press()
+
+    def load_settings(self):
+        include_sub = self.settings.value("Settings/include_subfolders", False, type=bool)
+        self.include_subfolders.setChecked(include_sub)
+        rules_str = self.settings.value("Settings/rules", "[]", type=str)
+        try:
+            self.rules = json.loads(rules_str)
+            if self.rules:
+                self.update_rules_table()
+                self.rules_stacked.setCurrentWidget(self.rules_table)
+        except Exception as e:
+            print(f"Không thể load rules: {e}")
+            self.rules = []
+
+        geometry = self.settings.value("Window/geometry")
+        if geometry:
+            self.restoreGeometry(geometry)
+    def save_settings(self):
+        self.settings.setValue("Settings/include_subfolders", self.include_subfolders.isChecked())
+        self.settings.setValue("Settings/rules", json.dumps(self.rules, ensure_ascii=False))
+        self.settings.setValue("Window/geometry", self.saveGeometry())
+
+    def closeEvent(self, event):
+        self.save_settings()
+        super().closeEvent(event)
 
     def add_folder(self):
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")

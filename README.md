@@ -100,7 +100,7 @@ Supported meta-tags for dynamic naming:
 
 # Download
 
-Download the latest release from the [Releases page](../../releases).
+Download the latest release from the [Releases page](https://github.com/yusteafy/batch-file-renamer/releases/tag/v1.0).
 
 # Installation
 
@@ -122,7 +122,17 @@ Download the latest release from the [Releases page](../../releases).
 
 1. Install uv from [astral.sh/uv](https://docs.astral.sh/uv/#__tabbed_1_2)
 
-2. Run build script:
+2. Clone the repository
+   ```bash
+   git clone https://github.com/yusteafy/batch-file-renamer
+   ```
+
+3. Navigate to the project directory then install dependencies
+   ```bash
+   uv sync
+   ```
+
+3. Run build script:
    ```bash
    build.bat
    ```

@@ -100,7 +100,7 @@ Supported meta-tags for dynamic naming:
 
 # Download
 
-Download the latest release from the [Releases page](https://github.com/yusteafy/batch-file-renamer/releases/tag/v1.0).
+Download the latest release from the [Releases page](https://github.com/yusteafy/batch-file-renamer/releases).
 
 # Installation
 

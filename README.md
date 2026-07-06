@@ -60,8 +60,6 @@ A batch file renaming tool with a flexible rule system, preview, and multi-step 
 - Remove Unicode noise
 - Fix extra spacing
 
-## Features
-
 ### Preview System
 - Shows old name → new name
 
@@ -102,23 +100,7 @@ Supported meta-tags for dynamic naming:
 
 Download the latest release from the [Releases page](https://github.com/yusteafy/batch-file-renamer/releases).
 
-# Installation
-
-## Option 1: Using Python + PyQt6 + PyInstaller
-
-1. Install Python from [python.org](https://www.python.org/)
-
-2. Install dependencies:
-   ```bash
-   pip install pyqt6 pyinstaller
-   ```
-
-3. Build application:
-   ```bash
-   pyinstaller --onefile --noconsole --icon=icon.ico main.py
-   ```
-
-## Option 2: Build from source (using uv)
+# Building from Source
 
 1. Install uv from [astral.sh/uv](https://docs.astral.sh/uv/#__tabbed_1_2)
 
